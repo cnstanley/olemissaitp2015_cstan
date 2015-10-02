@@ -4,17 +4,18 @@
  */
 class Registration
 {
-  public $host = "us-cdbr-azure-southcentral-e.cloudapp.net";
-  public $user = "b59e50473555e9";
-  public $pwd = "26114531";
-  public $db = "acsm_0e7ddff7b7d920f";
+
   public $conn;
 
   public function connectToDB()
   {
+    $host = "us-cdbr-azure-southcentral-e.cloudapp.net";
+    $user = "b59e50473555e9";
+    $pwd = "26114531";
+    $db = "acsm_0e7ddff7b7d920f";
     try {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
-        //$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     }
     catch(Exception $e){
         die(var_dump($e));
