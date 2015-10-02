@@ -43,8 +43,8 @@
   <input type="submit" name="submit" value="Submit">
 </form>
 <?php
-require 'conntodb.php'
-include 'registration-class.php';
+require ('conntodb.php');
+include ('registration-class.php');
 
 $Registration = new Registration();
 
