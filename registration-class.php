@@ -8,6 +8,7 @@ class Registration
   public $user = "b59e50473555e9";
   public $pwd = "26114531";
   public $db = "acsm_0e7ddff7b7d920f";
+  public $conn;
 
   public function connectToDB()
   {
