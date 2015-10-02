@@ -3,7 +3,7 @@
 
 <?php
 
-$name = $_GET['color'];
+$name = $_POST['competion'];
 
 // optional
 // echo "You chose the following color(s): <br>";
