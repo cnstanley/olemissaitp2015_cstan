@@ -45,6 +45,7 @@
   <input type="submit" name="submit" value="Submit">
 </form>
 <?php
+<<<<<<< HEAD
 if(!empty($_POST['check_list'])) {
     foreach($_POST['check_list'] as $check) {
             echo $check; //echos the values from the checkboxes that are selected
@@ -52,6 +53,19 @@ if(!empty($_POST['check_list'])) {
             //insert $userid, $check into table
     }
 }
+=======
+require ('conntodb.php');
+include ('registration-class.php');
+
+$Registration = new Registration();
+
+// Add to DB
+if(!empty($_POST)) {
+$Registration->addToDB($conn);
+}
+
+$Registration->showRegistrants($conn);
+>>>>>>> master
 ?>
 </body>
 </html>

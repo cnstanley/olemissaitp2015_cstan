@@ -4,24 +4,8 @@
  */
 class Registration
 {
-  public $host = "us-cdbr-azure-southcentral-e.cloudapp.net";
-  public $user = "b59e50473555e9";
-  public $pwd = "26114531";
-  public $db = "acsm_0e7ddff7b7d920f";
-  public $conn;
 
-  public function connectToDB()
-  {
-    try {
-        //$conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
-        //$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    }
-    catch(Exception $e){
-        die(var_dump($e));
-    }
-  }
-
-  public function addToDB()
+  public function addToDB($conn)
   {
     try {
         $name = $_POST['name'];
@@ -40,7 +24,7 @@ class Registration
     echo "<h3>Your're registered!</h3>";
   }
 
-  public function showRegistrants()
+  public function showRegistrants($conn)
   {
     $sql_select = "SELECT * FROM user_tbl";
     $stmt = $conn->query($sql_select);
