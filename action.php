@@ -1,12 +1,12 @@
 <html>
 <title>Action</title>
 
-<form action="test.php" method="post">
-<input type="checkbox" name="check_list[]" value="value 1">
-<input type="checkbox" name="check_list[]" value="value 2">
-<input type="checkbox" name="check_list[]" value="value 3">
-<input type="checkbox" name="check_list[]" value="value 4">
-<input type="checkbox" name="check_list[]" value="value 5">
+<form action="action.php" method="post">
+<input type="checkbox" name="check_list[]" value="value 1">one<br>
+<input type="checkbox" name="check_list[]" value="value 2"> two<br>
+<input type="checkbox" name="check_list[]" value="value 3"> three<br>
+<input type="checkbox" name="check_list[]" value="value 4"> four<br>
+<input type="checkbox" name="check_list[]" value="value 5"> five<br>
 <input type="submit" />
 </form>
 <?php
