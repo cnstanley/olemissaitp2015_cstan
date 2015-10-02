@@ -43,18 +43,19 @@
   <input type="submit" name="submit" value="Submit">
 </form>
 <?php
+include 'conntodb.php'
 include 'registration-class.php';
 
 $Registration = new Registration();
 
-$Registration->connectToDB();
+$Registration->connectToDB($conn);
 
 // Add to DB
 if(!empty($_POST)) {
-$Registration->addToDB();
+$Registration->addToDB($conn);
 }
 
-$Registration->showRegistrants();
+$Registration->showRegistrants($conn);
 ?>
 </body>
 </html>
