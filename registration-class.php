@@ -13,7 +13,7 @@ class Registration
   public function connectToDB()
   {
     try {
-        //$conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+        $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         //$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     }
     catch(Exception $e){
