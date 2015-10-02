@@ -18,10 +18,29 @@
 <body>
 <h1>Register here!</h1>
 <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
-<form method="post" action="index.php" enctype="multipart/form-data" >
-      Name  <input type="text" name="name" id="name"/></br>
-      Email <input type="text" name="email" id="email"/></br>
-      <input type="submit" name="submit" value="Submit" />
+<form method="POST" action="index.php" enctype="multipart/form-data">
+  <fieldset><legend>Personal information</legend>
+    Name:<br>
+    <input type="text" name="name"  id="name">
+    <br>
+    Email:<br>
+    <input type="text" name="email" id="email">
+  </fieldset>
+  <fieldset><legend>Competitions</legend>
+    <input type="checkbox" name="competions" value="ncc"> National Collegiate Competition<br>
+    <input type="checkbox" name="competions" value="regionals"> Regionals<br>
+  </fieldset>
+  <fieldset><legend>Focus Groups</legend>
+    <input type="checkbox" name="groups" value="business analytics"> Business Analytics<br>
+    <input type="checkbox" name="groups" value="database design"> Database Design<br>
+    <input type="checkbox" name="groups" value="microsoft office"> Microsoft Office<br>
+    <input type="checkbox" name="groups" value="mobil applications"> Mobile Applications<br>
+    <input type="checkbox" name="groups" value="network design"> Network Design<br>
+    <input type="checkbox" name="groups" value="pc troubleshooting"> PC Troubleshooting/Support<br>
+    <input type="checkbox" name="groups" value="security"> Security<br>
+    <input type="checkbox" name="groups" value="system analysis"> System Analysis & Design<br>
+  </fieldset>
+  <input type="submit" name="submit" value="Submit">
 </form>
 <?php
 // DB connection info
