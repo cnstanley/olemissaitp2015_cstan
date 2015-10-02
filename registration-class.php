@@ -4,8 +4,6 @@
  */
 class Registration
 {
-  private static $conn;
-
   public function connectToDB()
   {
     $host = "us-cdbr-azure-southcentral-e.cloudapp.net";
@@ -15,10 +13,13 @@ class Registration
     try {
         $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        return ($conn);
     }
     catch(Exception $e){
         die(var_dump($e));
+        return (null);
     }
+
   }
 
   public function addToDB()
@@ -42,7 +43,7 @@ class Registration
 
   public function showRegistrants()
   {
-    
+    $conn = connectToDB();
     $sql_select = "SELECT * FROM user_tbl";
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll();
