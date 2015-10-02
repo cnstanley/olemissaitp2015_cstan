@@ -71,8 +71,10 @@ try {
     $stmt->bindValue(1, $name);
     $stmt->bindValue(2, $email);
     $stmt->execute();
+    echo "<h3>End try</h3>"
 }
 catch(Exception $e) {
+  echo "<h3>Begin Catch</h3>"
   $group = $_GET['competition'];
   foreach ($group as $cname){
   echo $cname."<br />";
@@ -80,7 +82,7 @@ catch(Exception $e) {
   }
     //die(var_dump($e));
 }
-echo "<h3>Your're registered!</h3>";
+//echo "<h3>Your're registered!</h3>";
 }
 
 $sql_select = "SELECT * FROM user_tbl";
