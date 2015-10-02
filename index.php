@@ -48,8 +48,6 @@ include ('registration-class.php');
 
 $Registration = new Registration();
 
-$Registration->connectToDB($conn);
-
 // Add to DB
 if(!empty($_POST)) {
 $Registration->addToDB($conn);

@@ -26,6 +26,7 @@ class Registration
 
   public function showRegistrants($conn)
   {
+    echo "<h1>IN</h1>";
     $sql_select = "SELECT * FROM user_tbl";
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll();
