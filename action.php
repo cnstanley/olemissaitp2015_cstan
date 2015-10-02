@@ -5,14 +5,16 @@
 
 $name = $_POST['competion'];
 
-// optional
-// echo "You chose the following color(s): <br>";
+if(isset($_POST['competition'])) {
+  echo 'you chose';
+  foreach ($name as $c){
+  echo $c."<br />";
 
-foreach ($name as $c){
-echo $c."<br />";
-
+  }
 }
-
+else {
+  echo 'error getting competitions';
+}
  ?>
 
 </html>
