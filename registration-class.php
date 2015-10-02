@@ -4,10 +4,10 @@
  */
 class Registration
 {
-  private $host = "us-cdbr-azure-southcentral-e.cloudapp.net";
-  private $user = "b59e50473555e9";
-  private $pwd = "26114531";
-  private $db = "acsm_0e7ddff7b7d920f";
+  public $host = "us-cdbr-azure-southcentral-e.cloudapp.net";
+  public $user = "b59e50473555e9";
+  public $pwd = "26114531";
+  public $db = "acsm_0e7ddff7b7d920f";
 
   public function connectToDB()
   {
