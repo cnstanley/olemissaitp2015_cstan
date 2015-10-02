@@ -27,18 +27,18 @@
     <input type="text" name="email" id="email">
   </fieldset>
   <fieldset><legend>Competitions</legend>
-    <input type="checkbox" name="competion[]" id="competition" value="ncc"> National Collegiate Competition<br>
-    <input type="checkbox" name="competion[]" id="competition" value="regionals"> Regionals<br>
+    <input type="checkbox" name="competions" value="ncc"> National Collegiate Competition<br>
+    <input type="checkbox" name="competions" value="regionals"> Regionals<br>
   </fieldset>
   <fieldset><legend>Focus Groups</legend>
-    <input type="checkbox" name="group[]" id="group" value="business analytics"> Business Analytics<br>
-    <input type="checkbox" name="group[]" id="group" value="database design"> Database Design<br>
-    <input type="checkbox" name="group[]" id="group" value="microsoft office"> Microsoft Office<br>
-    <input type="checkbox" name="group[]" id="group" value="mobile applications"> Mobile Applications<br>
-    <input type="checkbox" name="group[]" id="group" value="network design"> Network Design<br>
-    <input type="checkbox" name="group[]" id="group" value="pc troubleshooting"> PC Troubleshooting/Support<br>
-    <input type="checkbox" name="group[]" id="group" value="security"> Security<br>
-    <input type="checkbox" name="group[]" id="group" value="system analysis"> System Analysis & Design<br>
+    <input type="checkbox" name="groups" value="business analytics"> Business Analytics<br>
+    <input type="checkbox" name="groups" value="database design"> Database Design<br>
+    <input type="checkbox" name="groups" value="microsoft office"> Microsoft Office<br>
+    <input type="checkbox" name="groups" value="mobil applications"> Mobile Applications<br>
+    <input type="checkbox" name="groups" value="network design"> Network Design<br>
+    <input type="checkbox" name="groups" value="pc troubleshooting"> PC Troubleshooting/Support<br>
+    <input type="checkbox" name="groups" value="security"> Security<br>
+    <input type="checkbox" name="groups" value="system analysis"> System Analysis & Design<br>
   </fieldset>
   <input type="submit" name="submit" value="Submit">
 </form>
@@ -71,18 +71,11 @@ try {
     $stmt->bindValue(1, $name);
     $stmt->bindValue(2, $email);
     $stmt->execute();
-    echo "<h3>End try</h3>"
 }
 catch(Exception $e) {
-  echo "<h3>Begin Catch</h3>"
-  $group = $_GET['competition'];
-  foreach ($group as $cname){
-  echo $cname."<br />";
-
-  }
-    //die(var_dump($e));
+    die(var_dump($e));
 }
-//echo "<h3>Your're registered!</h3>";
+echo "<h3>Your're registered!</h3>";
 }
 
 $sql_select = "SELECT * FROM user_tbl";
