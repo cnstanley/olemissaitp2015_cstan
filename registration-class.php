@@ -5,11 +5,9 @@
 class Registration
 {
 
-  public function addToDB($conn)
+  public function addToUserTbl($conn, $name, $email)
   {
     try {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
         // Insert data
         $sql_insert = "INSERT INTO user_tbl (name, email)
                        VALUES (?,?)";
@@ -21,7 +19,23 @@ class Registration
     catch(Exception $e) {
         die(var_dump($e));
     }
-    echo "<h3>Your're registered!</h3>";
+    echo "<h3>You're Signed Up!</h3>";
+  }
+
+  public function addToSignedUpTbl($conn, $name, $group)
+  {
+    try {
+        // Insert data
+        $sql_insert = "INSERT INTO signed_up_tbl (gname, uname)
+                       VALUES (?,?)";
+        $stmt = $conn->prepare($sql_insert);
+        $stmt->bindValue(1, $group);
+        $stmt->bindValue(2, $name);
+        $stmt->execute();
+    }
+    catch(Exception $e) {
+        die(var_dump($e));
+    }
   }
 
   public function showRegistrants($conn)

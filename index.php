@@ -45,15 +45,6 @@
   <input type="submit" name="submit" value="Submit">
 </form>
 <?php
-<<<<<<< HEAD
-if(!empty($_POST['check_list'])) {
-    foreach($_POST['check_list'] as $check) {
-            echo $check; //echos the values from the checkboxes that are selected
-            //sql goes here
-            //insert $userid, $check into table
-    }
-}
-=======
 require ('conntodb.php');
 include ('registration-class.php');
 
@@ -61,11 +52,16 @@ $Registration = new Registration();
 
 // Add to DB
 if(!empty($_POST)) {
-$Registration->addToDB($conn);
+  $Registration->addToUserTbl($conn,$_POST['name'],$_POST['email']);
+
+  if(!empty($_POST['check_list'])) {
+      foreach($_POST['check_list'] as $gname) {
+              $Registration->addToSignedUpTbl($conn,$_POST['name'], $gname);
+      }
+  }
 }
 
 $Registration->showRegistrants($conn);
->>>>>>> master
 ?>
 </body>
 </html>
