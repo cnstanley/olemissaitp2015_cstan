@@ -5,23 +5,23 @@ class Group{
   private $name;
   private $ID;
 
-  public Group($n, $GID){
+  public Group($n){
     $this->setName($n);
-    $this->setID($GID);
+    $this->syncGroup();
   }
 
   public funtion getID(){
     return $this->GID;
   }
-  public function setID($gid){
-    $this->ID = $gid;
-  }
+
   public function getName(){
     return $this->name;
   }
+
   public function setName($n){
     $this->name = $n;
   }
+  
   public function addToGroupTbl(){
     try {
         // Insert data
