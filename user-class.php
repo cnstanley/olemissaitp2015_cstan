@@ -4,10 +4,17 @@ public class User{
   private $conn; //connection variable to access database
   private $name;
   private $email;
+  private $uid;
   public User($name1, $email1){
     $this->setUser($name1, $email1);
   }
-  public setConn($c){
+  public function getUID(){
+    return $this->uid;
+  }
+  public function setUID($id){
+    $this->uid = $id;
+  }
+  public function setConn($c){
     $this->conn = $c;
   }
   private function setName($s){
