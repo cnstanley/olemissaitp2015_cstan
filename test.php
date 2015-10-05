@@ -44,3 +44,41 @@
   </fieldset>
   <input type="submit" name="submit" value="Submit">
 </form>
+
+<?php
+require ('conntodb.php');
+include ('registration-class.php');
+include ('user-class.php');
+include ('group-class.php');
+
+$Registration = new Registration();
+
+// Add to DB
+if(!empty($_POST)) {
+//attempt at using user class to save to db
+  $user = new User($_POST['name'],$_POST['name']);
+  $user->setConn($conn);
+  if (!$user->saveToDB())
+    echo 'error: user->saveToDB()';
+
+//  $Registration->addToUserTbl($conn,$_POST['name'],$_POST['email']);
+
+  if(!empty($_POST['check_list'])) {
+      foreach($_POST['check_list'] as $gname) {
+        new Group($gname)->addUser($user);
+              //$Registration->addToSignedUpTbl($conn,$_POST['name'], $gname);
+      }
+  }
+}
+if(!empty($_POST['check_list'])) {
+    foreach($_POST['check_list'] as $check) {
+            echo $check; //echoes the value set in the HTML form for each checked checkbox.
+                         //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
+                         //in your case, it would echo whatever $row['Report ID'] is equivalent to.
+    }
+}
+
+$Registration->showRegistrants($conn);
+?>
+</body>
+</html>

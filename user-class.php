@@ -7,7 +7,7 @@ class User{
   private $uid;
   public function User($name1, $email1){
     $this->setUser($name1, $email1);
-    $this->lookupUser();
+    $this->syncUser();
   }
   public function getUID(){
     return $this->uid;
