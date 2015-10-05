@@ -47,11 +47,18 @@
 <?php
 require ('conntodb.php');
 include ('registration-class.php');
+include ('user-class.php');
 
 $Registration = new Registration();
 
 // Add to DB
 if(!empty($_POST)) {
+/*attempt at using user class to save to db
+  $user = new User($_POST['name'],$_POST['name']);
+  $user->setConn($conn);
+  if (!$user->saveToDB())
+    echo 'error: user->saveToDB()';
+*/
   $Registration->addToUserTbl($conn,$_POST['name'],$_POST['email']);
 
   if(!empty($_POST['check_list'])) {

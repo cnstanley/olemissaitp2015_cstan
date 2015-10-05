@@ -14,19 +14,19 @@ public class User{
     $this->name = $s;
   }
   public function getName(){
-    return $name;
+    return $this->name;
   }
   private function setEmail($s){
     $this->email = $s;
   }
   public function getEmail(){
-    return $email;
+    return $this->email;
   }
   public function setUser($n, $e){
     $this->setName($n);
     $this->setEmail($e);
   }
-  public function saveToDB(){
+  public function addToUserTbl(){
     try {
         // Insert data
         $sql_insert = "INSERT INTO user_tbl (name, email)
@@ -35,13 +35,13 @@ public class User{
         $stmt->bindValue(1, $this->name);
         $stmt->bindValue(2, $this->email);
         $stmt->execute();
+        return true;
     }
     catch(Exception $e) {
         die(var_dump($e));
+        return false;
     }
   }
-
-
 }
 
  ?>
