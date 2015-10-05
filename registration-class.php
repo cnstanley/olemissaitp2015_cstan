@@ -105,40 +105,17 @@ class Registration
   }
 
   public function signUp($user, $group){
-    $userExists = false;
-
-    $sql_select = "SELECT email FROM user_tbl WHERE email = ".$user->getEmail();
-    $stmt = $conn->query($sql_select);
-    $registrants = $stmt->fetchAll();
-    if(count($registrants) > 0) {
-        $userExists = true;
+    try {
+        // Insert data
+        $sql_insert = "INSERT INTO signed_up_tbl (UID, GID)
+                       VALUES (?,?)";
+        $stmt = $conn->prepare($sql_insert);
+        $stmt->bindValue(1, $group->getGID());
+        $stmt->bindValue(2, $name->getUID());
+        $stmt->execute();
     }
-
-    // if user not in user_tbl
-    if ($userExists !== true){
-      $user->addToUserTbl();
-    }
-
-    //find User ID
-    $sql_select = "SELECT userid FROM user_tbl WHERE email = ".$user->getEmail();
-    $stmt = $conn->query($sql_select);
-    $registrants = $stmt->fetchAll();
-    if(count($registrants) > 0) {
-      foreach($registrants as $registrant) {
-          $user->setUID($registrant['userid']);
-      }
-    }
-
-    //find Group ID
-    //find User ID
-    $sql_select = "SELECT userid FROM group_tbl
-    WHERE group_name = ".$group->getGroup_Name();
-    $stmt = $conn->query($sql_select);
-    $registrants = $stmt->fetchAll();
-    if(count($registrants) > 0) {
-      foreach($registrants as $registrant) {
-          $user->setUID($registrant['userid']);
-      }
+    catch(Exception $e) {
+        die(var_dump($e));
     }
   }
 }
