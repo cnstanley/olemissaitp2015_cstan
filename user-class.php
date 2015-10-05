@@ -1,6 +1,6 @@
 <?php
 
-public class User{
+class User{
   private $conn; //connection variable to access database
   private $name;
   private $email;
