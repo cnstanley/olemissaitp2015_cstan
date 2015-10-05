@@ -1,9 +1,10 @@
 <?php
 
 class Group{
-
+  private $conn;
   private $name;
   private $ID;
+  private $conn;
 
   public Group($n){
     $this->setName($n);
@@ -21,7 +22,11 @@ class Group{
   public function setName($n){
     $this->name = $n;
   }
-  
+
+  public function setConn($c){
+    $this->conn = $c;
+  }
+
   public function addToGroupTbl(){
     try {
         // Insert data

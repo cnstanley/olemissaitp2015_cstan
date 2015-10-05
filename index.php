@@ -61,20 +61,14 @@ if(!empty($_POST)) {
 */
 $user = new User($_POST['name'],$_POST['name']);
 $user->setConn($conn);
-  $Registration->addToUserTbl($conn,$_POST['name'],$_POST['email']);
 
   if(!empty($_POST['check_list'])) {
       foreach($_POST['check_list'] as $gname) {
-              $Registration->addToSignedUpTbl($conn,$_POST['name'], $gname);
+              $group = new Group($gname)
+              $group->setConn($conn);
+              $Registration->signUp($user, $group);
       }
   }
-}
-if(!empty($_POST['check_list'])) {
-    foreach($_POST['check_list'] as $check) {
-            echo $check; //echoes the value set in the HTML form for each checked checkbox.
-                         //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
-                         //in your case, it would echo whatever $row['Report ID'] is equivalent to.
-    }
 }
 
 $Registration->showRegistrants($conn);
