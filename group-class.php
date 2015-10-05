@@ -30,27 +30,27 @@ class Group{
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $this->name);
         $stmt->execute();
-        return true;
+        return $this->syncGroup;
     }
     catch(Exception $e) {
         die(var_dump($e));
         return false;
     }
   }
-  public function lookUp(){
+  public function syncGroup(){
     $sql_select = "SELECT * FROM group_tbl WHERE name = ".$this->name;
     $stmt = $conn->query($sql_select);
-    $registrants = $stmt->fetchAll();
-    if(count($registrants) > 0) {
-      foreach($registrants as $registrant) {
-          $this->setUID($registrant['gid']);
-          $this->setName($registrant['name']);
+    $groups = $stmt->fetchAll();
+    if(count($groups) > 0) {
+      foreach($groups as $group) {
+          $this->setID($group['groupid']);
+          $this->setName($group['group_name']);
       }
-      return ;
+      return $this->getID();
     }
     else {
-      $this->addToGroupTbl();
-      return 0;
+      return $this->addToGroupTbl();
+
     }
   }
 
