@@ -45,10 +45,17 @@
   <input type="submit" name="submit" value="Submit">
 </form>
 <?php
+session_start();
 require ('conntodb.php');
 include ('registration-class.php');
 include ('user-class.php');
 
+if(!isset ($_SESSION['conn'])){
+  $_SESSION['conn'] = $conn;
+}
+else {
+    $conn = $_SESSION['conn'];
+}
 $Registration = new Registration();
 
 // Add to DB

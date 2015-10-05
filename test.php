@@ -46,11 +46,16 @@
 </form>
 
 <?php
-require ('conntodb.php');
+session_start();
+
+require_once ('conntodb.php');
 include ('registration-class.php');
 include ('user-class.php');
 include ('group-class.php');
 
+if(!isset ($_SESSION['conn']))
+  $_SESSION['conn'] = $conn;
+  
 $Registration = new Registration();
 
 // Add to DB
