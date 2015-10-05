@@ -7,14 +7,6 @@ class Registration
 
   public function addToUserTbl($conn, $name, $email)
   {
-    /*
-    //to be replaced with
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    addMemberToDB($conn, $name, $email);
-    foreach (group in selected_groups)
-      addMemberToGroup($conn, $email, group);
-    */
     try {
         // Insert data
         $sql_insert = "INSERT INTO user_tbl (name, email)
@@ -109,6 +101,44 @@ class Registration
         echo "</table>";
     } else {
         echo "<h3>No one is currently registered.</h3>";
+    }
+  }
+
+  public function signUp($user, $group){
+    $userExists = false;
+
+    $sql_select = "SELECT email FROM user_tbl WHERE email = ".$user->getEmail();
+    $stmt = $conn->query($sql_select);
+    $registrants = $stmt->fetchAll();
+    if(count($registrants) > 0) {
+        $userExists = true;
+    }
+
+    // if user not in user_tbl
+    if ($userExists !== true){
+      $user->addToUserTbl();
+    }
+
+    //find User ID
+    $sql_select = "SELECT userid FROM user_tbl WHERE email = ".$user->getEmail();
+    $stmt = $conn->query($sql_select);
+    $registrants = $stmt->fetchAll();
+    if(count($registrants) > 0) {
+      foreach($registrants as $registrant) {
+          $user->setUID($registrant['userid']);
+      }
+    }
+
+    //find Group ID
+    //find User ID
+    $sql_select = "SELECT userid FROM group_tbl
+    WHERE group_name = ".$group->getGroup_Name();
+    $stmt = $conn->query($sql_select);
+    $registrants = $stmt->fetchAll();
+    if(count($registrants) > 0) {
+      foreach($registrants as $registrant) {
+          $user->setUID($registrant['userid']);
+      }
     }
   }
 }
