@@ -7,6 +7,7 @@ public class User{
   private $uid;
   public User($name1, $email1){
     $this->setUser($name1, $email1);
+    $this->lookupUser();
   }
   public function getUID(){
     return $this->uid;
@@ -47,6 +48,24 @@ public class User{
     catch(Exception $e) {
         die(var_dump($e));
         return false;
+    }
+  }
+
+  // find Name and User ID and store
+  public function lookupUser(){
+    $sql_select = "SELECT * FROM user_tbl WHERE email = ".$this->email;
+    $stmt = $conn->query($sql_select);
+    $registrants = $stmt->fetchAll();
+    if(count($registrants) > 0) {
+      foreach($registrants as $registrant) {
+          $this->setUID($registrant['userid']);
+          $this->setName($registrant['name']);
+      }
+      return 1;
+    }
+    else {
+      $this->addToUserTbl();
+      return 0;
     }
   }
 }
