@@ -34,7 +34,7 @@ public class User{
     $this->setName($n);
     $this->setEmail($e);
   }
-  public function addToUserTbl(){
+  private function addToUserTbl(){
     try {
         // Insert data
         $sql_insert = "INSERT INTO user_tbl (name, email)
@@ -52,7 +52,7 @@ public class User{
   }
 
   // find Name and User ID and store
-  public function lookupUser(){
+  private function syncUser(){
     $sql_select = "SELECT * FROM user_tbl WHERE email = ".$this->email;
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll();
