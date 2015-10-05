@@ -64,7 +64,7 @@ $user->setConn($conn);
 
   if(!empty($_POST['check_list'])) {
       foreach($_POST['check_list'] as $gname) {
-              $group = new Group($gname)
+              $group = new Group($gname);
               $group->setConn($conn);
               $Registration->signUp($user, $group);
       }
