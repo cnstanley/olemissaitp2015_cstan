@@ -59,6 +59,8 @@ if(!empty($_POST)) {
   if (!$user->saveToDB())
     echo 'error: user->saveToDB()';
 */
+$user = new User($_POST['name'],$_POST['name']);
+$user->setConn($conn);
   $Registration->addToUserTbl($conn,$_POST['name'],$_POST['email']);
 
   if(!empty($_POST['check_list'])) {

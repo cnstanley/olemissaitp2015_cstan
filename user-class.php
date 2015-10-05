@@ -43,7 +43,7 @@ public class User{
         $stmt->bindValue(1, $this->name);
         $stmt->bindValue(2, $this->email);
         $stmt->execute();
-        return true;
+        return $this->lookupUser();
     }
     catch(Exception $e) {
         die(var_dump($e));
@@ -61,11 +61,10 @@ public class User{
           $this->setUID($registrant['userid']);
           $this->setName($registrant['name']);
       }
-      return 1;
+      return $this->getUID();
     }
     else {
-      $this->addToUserTbl();
-      return 0;
+      return $this->addToUserTbl();
     }
   }
 }
