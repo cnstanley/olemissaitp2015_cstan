@@ -9,7 +9,11 @@ class Group{
   }
 
   public function getID(){
-    return $this->GID;
+    return $this->ID;
+  }
+
+  public function setID($id){
+    $this->ID = $id;
   }
 
   public function getName(){
