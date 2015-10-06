@@ -66,8 +66,9 @@ if(!empty($_POST)) {
   if (!$user->saveToDB())
     echo 'error: user->saveToDB()';
 */
-$user = new User($_POST['name'],$_POST['name']);
 $user->setConn($conn);
+$user = new User($_POST['name'],$_POST['name']);
+
 
   if(!empty($_POST['check_list'])) {
       foreach($_POST['check_list'] as $gname) {
