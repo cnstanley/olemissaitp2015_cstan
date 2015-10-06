@@ -51,6 +51,7 @@ class Registration
       die(var_dump($e));
     }
   }
+  //comment
   public function addMemberToGroup($conn, $email, $group){
     //needs to be tested
     try {
