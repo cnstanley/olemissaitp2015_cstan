@@ -1,4 +1,5 @@
-<html>
+//this is our action php file
+
 <title>Action</title>
 
 <form action="action.php" method="post">
@@ -23,7 +24,7 @@
 <?php
 if(!empty($_POST['check_list'])) {
     foreach($_POST['check_list'] as $check) {
-            echo $check; 
+            echo $check;
             //insert sql here.
             //$check is the group name
     }
