@@ -68,8 +68,7 @@ if(!empty($_POST)) {
 */
 
 $user = new User($_POST['name'],$_POST['name']);
-$user->setConn($conn);
-$user->syncUser();
+$user->syncUser($conn);
 
   if(!empty($_POST['check_list'])) {
       foreach($_POST['check_list'] as $gname) {
