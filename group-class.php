@@ -23,7 +23,7 @@ class Group{
   public function addToGroupTbl($conn){
     try {
         // Insert data
-        $sql_insert = "INSERT INTO group_tbl (name)
+        $sql_insert = "INSERT INTO group_tbl (group_name)
                        VALUES (?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $this->name);
@@ -36,7 +36,8 @@ class Group{
     }
   }
   public function syncGroup($conn){
-    $sql_select = "SELECT * FROM group_tbl WHERE name = "."'".$this->name."'";
+    $sql_select = "SELECT * FROM group_tbl
+    WHERE group_name = "."'".$this->name."'";
     $stmt = $conn->query($sql_select);
     $groups = $stmt->fetchAll();
     if(count($groups) > 0) {
