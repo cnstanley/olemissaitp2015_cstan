@@ -8,7 +8,6 @@ class Group{
 
   public Group($n){
     $this->setName($n);
-    $this->syncGroup();
   }
 
   public funtion getID(){

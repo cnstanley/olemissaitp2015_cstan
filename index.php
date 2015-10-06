@@ -66,14 +66,16 @@ if(!empty($_POST)) {
   if (!$user->saveToDB())
     echo 'error: user->saveToDB()';
 */
-$user->setConn($conn);
-$user = new User($_POST['name'],$_POST['name']);
 
+$user = new User($_POST['name'],$_POST['name']);
+$user->setConn($conn);
+$user->syncUser();
 
   if(!empty($_POST['check_list'])) {
       foreach($_POST['check_list'] as $gname) {
               $group = new Group($gname);
               $group->setConn($conn);
+              $group->syncGroup();
               $Registration->signUp($user, $group);
       }
   }
