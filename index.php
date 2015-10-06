@@ -75,7 +75,7 @@ $user->syncUser($conn);
       foreach($_POST['check_list'] as $gname) {
               $group = new Group($gname);
               $group->syncGroup($conn);
-              $Registration->signUp($user, $group);
+              $Registration->signUp($user, $group, $conn);
       }
   }
 }
