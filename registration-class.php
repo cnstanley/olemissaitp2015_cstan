@@ -28,7 +28,7 @@ class Registration
     try {
         echo "<br>GroupID = ".$group->getID()." UID = ".$user->getUID()."</br>";
         // Insert data
-        $sql_insert = "INSERT INTO signed_up_tbl (UID, GID)
+        $sql_insert = "INSERT INTO signed_up_tbl (GID, UID)
                        VALUES (?,?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $group->getID());
