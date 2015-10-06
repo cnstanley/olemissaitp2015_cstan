@@ -67,7 +67,7 @@ if(!empty($_POST)) {
     echo 'error: user->saveToDB()';
 */
 
-$user = new User($_POST['name'],$_POST['name']);
+$user = new User($_POST['name'],$_POST['email']);
 $user->syncUser($conn);
 
   if(!empty($_POST['check_list'])) {
