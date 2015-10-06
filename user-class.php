@@ -38,7 +38,7 @@ class User{
         // Insert data
         $sql_insert = "INSERT INTO user_tbl (name, email)
                        VALUES (?,?)";
-        $stmt = $conn->prepare($sql_insert);
+        $stmt = $this->$conn->prepare($sql_insert);
         $stmt->bindValue(1, $this->name);
         $stmt->bindValue(2, $this->email);
         $stmt->execute();
@@ -53,7 +53,7 @@ class User{
   // find Name and User ID and store
   public function syncUser(){
     $sql_select = "SELECT * FROM user_tbl WHERE email = ".$this->email;
-    $stmt = $conn->query($sql_select);
+    $stmt = $this->$conn->query($sql_select);
     $registrants = $stmt->fetchAll();
     if(count($registrants) > 0) {
       foreach($registrants as $registrant) {
