@@ -1,7 +1,6 @@
 <?php
 
 class Group{
-  private $conn;
   private $name;
   private $ID;
 
