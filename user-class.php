@@ -48,7 +48,7 @@ class User{
 
   // find Name and User ID and store
   public function syncUser($conn){
-    $sql_select = "SELECT * FROM user_tbl WHERE email = ".$this->email;
+    $sql_select = "SELECT * FROM user_tbl WHERE email = "."'".$this->email."'";
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll();
     if(count($registrants) > 0) {
