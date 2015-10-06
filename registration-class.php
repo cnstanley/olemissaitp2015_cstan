@@ -30,7 +30,7 @@ class Registration
         $sql_insert = "INSERT INTO signed_up_tbl (UID, GID)
                        VALUES (?,?)";
         $stmt = $conn->prepare($sql_insert);
-        $stmt->bindValue(1, $group->getGID());
+        $stmt->bindValue(1, $group->getID());
         $stmt->bindValue(2, $name->getUID());
         $stmt->execute();
     }
