@@ -4,7 +4,6 @@ class Group{
   private $conn;
   private $name;
   private $ID;
-  private $conn;
 
   public Group($n){
     $this->setName($n);
@@ -22,11 +21,7 @@ class Group{
     $this->name = $n;
   }
 
-  public function setConn($c){
-    $this->conn = $c;
-  }
-
-  public function addToGroupTbl(){
+  public function addToGroupTbl($conn){
     try {
         // Insert data
         $sql_insert = "INSERT INTO group_tbl (name)
@@ -34,15 +29,15 @@ class Group{
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $this->name);
         $stmt->execute();
-        return $this->syncGroup;
+        return $this->syncGroup($conn);
     }
     catch(Exception $e) {
         die(var_dump($e));
         return false;
     }
   }
-  public function syncGroup(){
-    $sql_select = "SELECT * FROM group_tbl WHERE name = ".$this->name;
+  public function syncGroup($conn){
+    $sql_select = "SELECT * FROM group_tbl WHERE name = "."'".$this->name."'";
     $stmt = $conn->query($sql_select);
     $groups = $stmt->fetchAll();
     if(count($groups) > 0) {
@@ -53,7 +48,7 @@ class Group{
       return $this->getID();
     }
     else {
-      return $this->addToGroupTbl();
+      return $this->addToGroupTbl($conn);
 
     }
   }
