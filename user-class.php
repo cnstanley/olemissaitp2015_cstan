@@ -1,7 +1,6 @@
 <?php
 
 class User{
-  private $conn; //connection variable to access database
   private $name;
   private $email;
   private $uid;
@@ -13,9 +12,6 @@ class User{
   }
   public function setUID($id){
     $this->uid = $id;
-  }
-  public function setConn($c){
-    $this->conn = $c;
   }
   private function setName($s){
     $this->name = $s;
@@ -33,16 +29,16 @@ class User{
     $this->setName($n);
     $this->setEmail($e);
   }
-  private function addToUserTbl(){
+  private function addToUserTbl($conn){
     try {
         // Insert data
         $sql_insert = "INSERT INTO user_tbl (name, email)
                        VALUES (?,?)";
-        $stmt = $this->$conn->prepare($sql_insert);
+        $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $this->name);
         $stmt->bindValue(2, $this->email);
         $stmt->execute();
-        return $this->lookupUser();
+        return $this->lookupUser($conn);
     }
     catch(Exception $e) {
         die(var_dump($e));
@@ -51,9 +47,9 @@ class User{
   }
 
   // find Name and User ID and store
-  public function syncUser(){
+  public function syncUser($conn){
     $sql_select = "SELECT * FROM user_tbl WHERE email = ".$this->email;
-    $stmt = $this->$conn->query($sql_select);
+    $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll();
     if(count($registrants) > 0) {
       foreach($registrants as $registrant) {
@@ -63,7 +59,7 @@ class User{
       return $this->getUID();
     }
     else {
-      return $this->addToUserTbl();
+      return $this->addToUserTbl($conn);
     }
   }
 }
