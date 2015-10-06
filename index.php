@@ -49,7 +49,6 @@ session_start();
 require ('conntodb.php');
 include ('registration-class.php');
 include ('user-class.php');
-include ('group-class.php');
 
 if(!isset ($_SESSION['conn'])){
   $_SESSION['conn'] = $conn;
@@ -74,8 +73,7 @@ $user->syncUser($conn);
   if(!empty($_POST['check_list'])) {
       foreach($_POST['check_list'] as $gname) {
               $group = new Group($gname);
-              $group->setConn($conn);
-              $group->syncGroup();
+              $group->syncGroup($conn);
               $Registration->signUp($user, $group);
       }
   }
