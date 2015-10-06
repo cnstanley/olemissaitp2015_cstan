@@ -53,9 +53,7 @@ include ('registration-class.php');
 include ('user-class.php');
 include ('group-class.php');
 
-if(!isset ($_SESSION['conn']))
-  $_SESSION['conn'] = $conn;
-  
+
 $Registration = new Registration();
 
 // Add to DB

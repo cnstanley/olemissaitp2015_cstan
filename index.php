@@ -49,6 +49,7 @@ session_start();
 require ('conntodb.php');
 include ('registration-class.php');
 include ('user-class.php');
+include ('group-class.php');
 
 if(!isset ($_SESSION['conn'])){
   $_SESSION['conn'] = $conn;
