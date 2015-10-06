@@ -38,7 +38,7 @@ class User{
         $stmt->bindValue(1, $this->name);
         $stmt->bindValue(2, $this->email);
         $stmt->execute();
-        return $this->lookupUser($conn);
+        return $this->syncUser($conn);
     }
     catch(Exception $e) {
         die(var_dump($e));
