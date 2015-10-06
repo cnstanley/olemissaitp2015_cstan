@@ -31,7 +31,7 @@ class Registration
                        VALUES (?,?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $group->getID());
-        $stmt->bindValue(2, $name->getUID());
+        $stmt->bindValue(2, $user->getUID());
         $stmt->execute();
     }
     catch(Exception $e) {
