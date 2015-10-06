@@ -7,7 +7,7 @@ class User{
   private $uid;
   public function User($name1, $email1){
     $this->setUser($name1, $email1);
-    $this->syncUser($conn);
+    $this->syncUser();
   }
   public function getUID(){
     return $this->uid;
@@ -52,7 +52,7 @@ class User{
   }
 
   // find Name and User ID and store
-  private function syncUser($conn){
+  private function syncUser(){
     $sql_select = "SELECT * FROM user_tbl WHERE email = ".$this->email;
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll();
