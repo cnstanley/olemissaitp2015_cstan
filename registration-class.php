@@ -26,6 +26,7 @@ class Registration
 
   public function signUp($user, $group, $conn){
     try {
+        echo "<br>GroupID = ".$group->getID()." UID = ".$user->getUID()."</br>";
         // Insert data
         $sql_insert = "INSERT INTO signed_up_tbl (UID, GID)
                        VALUES (?,?)";
