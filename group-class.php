@@ -4,11 +4,11 @@ class Group{
   private $name;
   private $ID;
 
-  public Group($n){
+  public function Group($n){
     $this->setName($n);
   }
 
-  public funtion getID(){
+  public function getID(){
     return $this->GID;
   }
 
