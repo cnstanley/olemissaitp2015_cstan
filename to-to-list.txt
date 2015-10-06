@@ -1,0 +1,9 @@
+1. User sign Up
+2. Authentication
+3. Views
+    User-sign up for group, list groups, suggest group
+    Officer- list users, +/-users, +/-news, +/-groups
+    Admin-    +/-Officer,
+4. Navigation bar
+5. style
+6. user Comments
