@@ -1,4 +1,3 @@
-//this is our action php file
 
 <title>Action</title>
 
